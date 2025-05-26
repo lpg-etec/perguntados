@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <script>
+        /*
+        const bar = document.getElementById('bar');
+            let start = document.timeline.currentTime;
+            let target = start + 5000;
+            requestAnimationFrame(function fn(t) {
+                let current = t - start;
+                if (current >= target) {
+                    current = target;
+                }
+                bar.style.width = `${100 - (current / target * 100)}%`;
+                bar.style.backgroundColor = `rgb(${255 * (current / target)}, ${255 - (255 * (current / target))}, 0)`;
+                // bar.innerText = `${Math.floor((target-current)/1000)}`;
+                requestAnimationFrame(fn);
+            });
+        */
+        let hist;
+        try {
+            hist = JSON.parse(localStorage.getItem('history')) ?? [];
+        } catch {
+        }
+        console.log(hist);
+
+        const questions = [
+            {
+                "value": "Quem é o rei dos deuses na mitologia grega?",
+                "answers": [
+                    { "value": "Apolo", "correct": false },
+                    { "value": "Zeus", "correct": true },
+                ]
+            },
+            {
+                "value": "Qual é a deusa romana do amor e da beleza?",
+                "answers": [
+                    { "value": "Vênus", "correct": true },
+                    { "value": "Diana", "correct": false }
+                ]
+            },
+            {
+                "value": "Quem foi o herói grego que realizou os 12 trabalhos?",
+                "answers": [
+                    { "value": "Ulisses", "correct": false },
+                    { "value": "Hércules", "correct": true }
+                ]
+            },
+            {
+                "value": "Na mitologia nórdica, quem é o deus do trovão?",
+                "answers": [
+                    { "value": "Loki", "correct": false },
+                    { "value": "Thor", "correct": true }
+                ]
+            },
+            {
+                "value": "Qual é o nome do cavalo de guerra de Hades, o deus do submundo na mitologia grega?",
+                "answers": [
+                    { "value": "Cérbero", "correct": true },
+                    { "value": "Pégaso", "correct": false }
+                ]
+            },
+            {
+                "value": "Quem é a deusa grega da sabedoria?",
+                "answers": [
+                    { "value": "Hera", "correct": false },
+                    { "value": "Atena", "correct": true }
+                ]
+            },
+            {
+                "value": "Quem era o pai de Zeus, Poseidon e Hades?",
+                "answers": [
+                    { "value": "Cronos", "correct": true },
+                    { "value": "Apolo", "correct": false }
+                ]
+            },
+            {
+                "value": "Na mitologia egípcia, quem é o deus do sol?",
+                "answers": [
+                    { "value": "Rá", "correct": true },
+                    { "value": "Osíris", "correct": false }
+                ]
+            },
+            {
+                "value": "Quem foi o herói que matou a Medusa na mitologia grega?",
+                "answers": [
+                    { "value": "Aquiles", "correct": false },
+                    { "value": "Perseu", "correct": true },
+                ]
+            },
+            {
+                "value": "Quem é a deusa da caça na mitologia grega?",
+                "answers": [
+                    { "value": "Afrodite", "correct": false },
+                    { "value": "Ártemis", "correct": true }
+                ]
+            },
+            {
+                "value": "Qual das alternativas apresenta corretamente a fórmula para calcular a distância entre dois pontos em um plano cartesiano?",
+                "answers": [
+                    { "value": "<img src='./dist2.png'/>", "correct": false },
+                    { "value": "<img src='./dist1.png'/>", "correct": true }
+                ]
+            },
+            {
+                "value": "De acordo com a segunda lei de Newton, qual formula representa a equação da Força?",
+                "answers": [
+                    { "value": "<img src='./f2.png'/>", "correct": false },
+                    { "value": "<img src='./f1.png'/>", "correct": true }
+                ]
+            },
+            {
+                "value": "Complete: Ela foi __ escola para entregar __ trabalho de história.",
+                "answers": [
+                    { "value": "a, à", "correct": true },
+                    { "value": "à, à", "correct": false }
+                ]
+            },
+            {
+                "value": "Assinale a alternativa correta sobre a Revolução Francesa.",
+                "answers": [
+                    { "value": "A Revolução Francesa ocorreu entre 1789 e 1799, sendo um movimento político e social que visava o fim do absolutismo e o estabelecimento de uma república democrática.", "correct": true },
+                    { "value": "A Revolução Francesa foi um movimento exclusivamente econômico que visava à redistribuição de riquezas sem alterar a estrutura política do país.", "correct": false }
+                ]
+            },
+            {
+                "value": "Qual é o maior continente do mundo em termos de área?",
+                "answers": [
+                    { "value": "África", "correct": false },
+                    { "value": "Ásia", "correct": true }
+                ]
+            },
+            {
+                "value": "Qual o principal objetivo da pedagogia de Paulo Freire?",
+                "answers": [
+                    { "value": "Ensinar a leitura e a escrita de forma tradicional", "correct": false },
+                    { "value": "Promover a educação crítica e libertadora, estimulando a conscientização", "correct": true }
+                ]
+            },
+            {
+                "value": "O que Paulo Freire criticava nas práticas pedagógicas tradicionais?",
+                "answers": [
+                    { "value": "O caráter bancário da educação, que tratava os alunos como receptores passivos de conhecimento", "correct": true },
+                    { "value": "A ênfase no ensino de conteúdos acadêmicos específicos", "correct": false },
+                ]
+            },
+            {
+                "value": "Qual é o conceito central na obra 'Pedagogia do Oprimido'?",
+                "answers": [
+                    { "value": "A educação como um meio de transformação social, buscando a liberdade dos oprimidos", "correct": true },
+                    { "value": "A educação como um processo de adoção de valores impostos", "correct": false },
+                ]
+            },
+            {
+                "value": "Como Paulo Freire via a relação entre educador e educando?",
+                "answers": [
+                    { "value": "Como uma relação hierárquica, onde o educador é superior", "correct": false },
+                    { "value": "Como uma relação de diálogo, em que ambos aprendem juntos", "correct": true },
+                ]
+            },
+            {
+                "value": "Qual o papel da 'ação-reflexão-ação' na educação de Paulo Freire?",
+                "answers": [
+                    { "value": "A prática educativa deve ser baseada na reflexão crítica e na ação, promovendo mudanças concretas", "correct": true },
+                    { "value": "Apenas refletir sobre a teoria sem aplicação prática", "correct": false },
+                ]
+            }
+        ];
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            const start = document.getElementById('start');
+            const game = document.getElementById('game');
+            const end = document.getElementById('end');
+            const team1 = document.getElementById('team1');
+            const team1Name = document.getElementById('team1-name');
+            const team1Score = document.getElementById('team1-score');
+            const team2 = document.getElementById('team2');
+            const team2Name = document.getElementById('team2-name');
+            const team2Score = document.getElementById('team2-score');
+            const question = document.getElementById('question');
+            const questionNum = document.getElementById('question-num');
+            const answers = document.getElementById('answers');
+            const next = document.getElementById('next-question');
+            const reset = document.getElementById('reset');
+            const winner = document.getElementById('winner');
+            const team1NameFinal = document.getElementById('team1-name-final');
+            const team1ScoreFinal = document.getElementById('team1-score-final');
+            const team2NameFinal = document.getElementById('team2-name-final');
+            const team2ScoreFinal = document.getElementById('team2-score-final');
+            const tbody = document.getElementById('tbody');
+
+            for (let each of hist) {
+                tbody.innerHTML += `<tr>
+                    <td>${each.name}</td>
+                    <td>${each.score}</td>
+                </tr>`;
+            }
+
+            let qi = 0;
+            document.getElementById('submit').addEventListener('click', async () => {
+                start.hidden = true;
+                team1Name.innerText = document.getElementById('team1-input').value;
+                team1Score.innerText = '0';
+                team2Name.innerText = document.getElementById('team2-input').value;
+                team2Score.innerText = '0';
+                game.hidden = false;
+
+                function fn() {
+                    if (qi >= questions.length) {
+                        game.hidden = true;
+                        end.hidden = false;
+
+                        if (Number(team1Score.textContent) > Number(team2Score.textContent)) {
+                            winner.innerText = team1Name.textContent;
+                        } else {
+                            winner.innerText = team2Name.textContent;
+                        }
+
+                        team1NameFinal.textContent = team1Name.textContent;
+                        team1ScoreFinal.textContent = team1Score.textContent;
+
+                        team2NameFinal.textContent = team2Name.textContent;
+                        team2ScoreFinal.textContent = team2Score.textContent;
+
+                        hist.push({ name: team1Name.textContent, score: Number(team1Score.textContent) });
+                        tbody.innerHTML += `<tr>
+                            <td>${team1Name.textContent}</td>
+                            <td>${team1Score.textContent}</td>
+                        </tr>`;
+                        hist.push({ name: team2Name.textContent, score: Number(team2Score.textContent) });
+                        tbody.innerHTML += `<tr>
+                            <td>${team2Name.textContent}</td>
+                            <td>${team2Score.textContent}</td>
+                        </tr>`;
+                        localStorage.setItem('history', JSON.stringify(hist));
+                        return;
+                    }
+                    question.innerText = questions[qi].value;
+                    answers.innerHTML = '';
+                    next.hidden = true;
+                    questionNum.innerText = `${qi+1}/${questions.length}`;
+                    const bar = document.getElementById('bar');
+                    let s = document.timeline.currentTime;
+                    let target = 15000;
+                    requestAnimationFrame(function fn(t) {
+                        let current = t - s;
+                        if (current >= target) {
+                            current = target;
+                        }
+                        bar.style.width = `${100 - (current / target * 100)}%`;
+                        bar.style.backgroundColor = `rgb(${255 * (current / target)}, ${255 - (255 * (current / target))}, 0)`;
+                        // bar.innerText = `${Math.floor((target-current)/1000)}`;
+                        if (current == target) {
+                            for (let i in questions[qi].answers) {
+                                let each = questions[qi].answers[i];
+                                answers.innerHTML += `<div --correct="${each.correct}" style="display: flex;align-items: center; justify-content: start;width: 100%;margin-right: .5em;background-color: #fff6da;color: black;width: 25vw;border: 2px solid #643f1d;padding: 1em;border-radius: .5em;">
+                                    <span style="font-size: 2em;margin-right: .5em;background: black;color:white;padding: .25em;border-radius: .25em;">${String.fromCharCode(65+Number(i))}</span>
+                                    <span style="font-size: 1.25em;">${each.value}</span>
+                                </div>`;
+                            }
+                            return;
+                        }
+                        requestAnimationFrame(fn);
+                    });
+                }
+
+                answers.addEventListener('click', () => {
+                    for (let each of answers.children) {
+                        if (each.getAttribute('--correct') == 'true') {
+                            each.style.boxShadow = `0 0 15px rgba(0, 0, 0, 0.5)`;
+                        } else {
+                            each.style.filter = `brightness(50%)`;
+                        }
+                    }
+                });
+
+                next.addEventListener('click', () => {
+                    qi++;
+                    fn();
+                });
+
+                fn();
+            });
+
+            team1.addEventListener('click', () => {
+                team1Score.innerText = Number(team1Score.innerText)+1;
+                next.hidden = false;
+            });
+            team2.addEventListener('click', () => {
+                team2Score.innerText = Number(team2Score.innerText)+1;
+                next.hidden = false;
+            });
+            reset.addEventListener('click', () => {
+                end.hidden = true;
+                start.hidden = false;
+                qi = 0;
+            });
+        });
+    </script>
+    <div style="background-image: url('background2.png');background-size: cover;width: 100%;height: 100vh;">
+        <div id="start" style="width: 100%;height: 100vh">
+            <div style="height: 35%;display: flex;flex-flow: column;align-items: center;justify-content: center;">
+                <h1>Perguntados</h1>
+            </div>
+            <div style="height: 65%;text-align: center;">
+                <h3>Disputa entre duas equipes, com uma questão e duas respostas.</h3>
+                <button type="button" style="margin-top: 1em;" class="btn btn-lg btn-primary" data-bs-toggle="modal" data-bs-target="#startGameModal">Começar</button>
+            </div>
+        </div>
+        <div hidden id="game" style="width: 100%;height: 100%;display: flex;flex-flow: column;align-items: center;justify-content: space-around;">
+            <div style="height: 10%;width: 100%;display: flex;align-items: center;justify-content: center;">
+                <div id="team1" style="display: flex;align-items: center; justify-content: end;width: 100%;background-color: #fff6da;color: black;width: 25%;border: 2px solid #643f1d;padding: .25em;border-radius: .5em;cursor: pointer;user-select: none;">
+                    <span id="team1-name">Team 1</span>
+                    <span id="team1-score" style="margin-left: .5em;background: black;color:white;font-weight: bold;padding-left: .5em;padding-right: .5em;border-radius: .25em;">2</span>
+                </div>
+                <span style="font-weight: bold;font-size: 1.5em;margin-left: .5em;margin-right: .5em;">Vs.</span>
+                <div id="team2" style="display: flex;align-items: center; justify-content: start;width: 100%;background-color: #fff6da;color: black;width: 25%;border: 2px solid #643f1d;padding: .25em;border-radius: .5em;cursor: pointer;user-select: none;">
+                    <span id="team2-score" style="margin-right: .5em;background: black;color:white;font-weight: bold;padding-left: .5em;padding-right: .5em;border-radius: .25em;">0</span>
+                    <span id="team2-name">Team 2</span>
+                </div>
+            </div>
+            <div style="height: 15%;width: 100%;display: flex;flex-flow: column;align-items: center;justify-content: center;">
+                <h3 id="question-title">Questão: <span id="question-num"></span></h3>
+                <div id="bar" style="width: 100%;height: 1.5em;color: white;text-align:center;background-color: black;margin-top: .5em;margin-bottom: .5em;border-radius: .5em;"></div>
+            </div>
+            <div style="height: 70%;width: 95%;">
+                <h2 id="question" style="text-align: center;border-radius: 0.5em;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore qui perferendis blanditiis rem soluta hic ullam! Repellat modi, nostrum animi non at sint dolor unde architecto culpa, libero, sequi ipsam!</h2>
+                <div style="display: flex;align-items: center;justify-content: center;">
+                </div>
+                <div id="answers" style="display: flex;flex-flow: row;align-items: center;justify-content: center;margin-top: 1em;cursor: pointer;user-select: none;">
+                </div>
+            </div>
+            <div style="position: absolute;bottom: 1em;right: 1em;">
+                <button id="next-question" class="btn btn-primary" hidden>Próxima</button>
+            </div>
+        </div>
+        <div id="end" style="width: 100%;height: 100%;display: flex;flex-flow: column;align-items: center;justify-content: center;" hidden>
+            <h2>Equipe <span id="winner" style="font-weight: bold;color: #643f1d;">equipe</span> ganhou!</h2>
+            <div style="width: 100%;display: flex;align-items: center;justify-content: center;margin-top: 1em;">
+                <div id="team1" style="display: flex;align-items: center; justify-content: end;width: 100%;background-color: #fff6da;color: black;width: 25%;border: 2px solid #643f1d;padding: .25em;border-radius: .5em;cursor: pointer;user-select: none;">
+                    <span id="team1-name-final">Team 1</span>
+                    <span id="team1-score-final" style="margin-left: .5em;background: black;color:white;font-weight: bold;padding-left: .5em;padding-right: .5em;border-radius: .25em;">2</span>
+                </div>
+                <span style="font-weight: bold;font-size: 1.5em;margin-left: .5em;margin-right: .5em;">Vs.</span>
+                <div id="team2" style="display: flex;align-items: center; justify-content: start;width: 100%;background-color: #fff6da;color: black;width: 25%;border: 2px solid #643f1d;padding: .25em;border-radius: .5em;cursor: pointer;user-select: none;">
+                    <span id="team2-score-final" style="margin-right: .5em;background: black;color:white;font-weight: bold;padding-left: .5em;padding-right: .5em;border-radius: .25em;">0</span>
+                    <span id="team2-name-final">Team 2</span>
+                </div>
+            </div>
+            <div style="position: absolute;bottom: 1em;right: 1em;">
+                <button id="reset" class="btn btn-primary" hidden>Finalizar</button>
+            </div>
+        </div>
+    </div>
+    <div style="width: 100%;height: 100vh;">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Dashboard</a>
+            </div>
+        </nav>
+        <div class="container mt-4">
+            <h3>Times</h3>
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Nome</th>
+                            <th>Pontos</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- <div style="margin: 2.5em;">
+        <h1>Question</h1>
+        <div style="display: flex;align-items: start;justify-items: start;flex-flow: column;">
+            <div style="display: flex;align-items: center; justify-content: start;width: 100%;margin-bottom: .5em;background-color: black;color: white;width: 25vw;padding: 1em;border-radius: .5em;cursor: pointer;user-select: none;">
+                <span style="font-size: 2em;margin-right: .5em;">A</span>
+                <span>Lorem ipsum dolor sit amet.</span>
+            </div>
+        </div>
+    </div> -->
+    <div style="position: fixed;top: 1em;right: 1em;" hidden>
+        <button style="font-size: 1em;color: white;background-color: transparent;border:none;">X</button>
+    </div>
+    <div class="modal fade" id="startGameModal" tabindex="-1" aria-labelledby="startGameModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="startGameModalLabel">Novo Jogo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="team1" class="form-label">Time 1</label>
+                        <input id="team1-input" type="text" class="form-control" name="team1" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="team2" class="form-label">Time 2</label>
+                        <input id="team2-input" type="text" class="form-control" name="team2" required>
+                    </div>
+                    <!-- <div class="mb-3">
+                        <label for="questionCount" class="form-label">Number of Questions</label>
+                        <input type="number" class="form-control" id="questionCount" name="questionCount" min="1" required>
+                    </div> -->
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" id="submit" data-bs-dismiss="modal">Começar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
