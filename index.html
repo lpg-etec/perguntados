@@ -31,169 +31,918 @@
         }
         console.log(hist);
 
-        const questions = [
-            {
-                "value": "Quem é o rei dos deuses na mitologia grega?",
-                "answers": [
-                    { "value": "Apolo", "correct": false },
-                    { "value": "Zeus", "correct": true },
-                ]
-            },
-            {
-                "value": "Qual é a deusa romana do amor e da beleza?",
-                "answers": [
-                    { "value": "Vênus", "correct": true },
-                    { "value": "Diana", "correct": false }
-                ]
-            },
-            {
-                "value": "Quem foi o herói grego que realizou os 12 trabalhos?",
-                "answers": [
-                    { "value": "Ulisses", "correct": false },
-                    { "value": "Hércules", "correct": true }
-                ]
-            },
-            {
-                "value": "Na mitologia nórdica, quem é o deus do trovão?",
-                "answers": [
-                    { "value": "Loki", "correct": false },
-                    { "value": "Thor", "correct": true }
-                ]
-            },
-            {
-                "value": "Qual é o nome do cavalo de guerra de Hades, o deus do submundo na mitologia grega?",
-                "answers": [
-                    { "value": "Cérbero", "correct": true },
-                    { "value": "Pégaso", "correct": false }
-                ]
-            },
-            {
-                "value": "Quem é a deusa grega da sabedoria?",
-                "answers": [
-                    { "value": "Hera", "correct": false },
-                    { "value": "Atena", "correct": true }
-                ]
-            },
-            {
-                "value": "Quem era o pai de Zeus, Poseidon e Hades?",
-                "answers": [
-                    { "value": "Cronos", "correct": true },
-                    { "value": "Apolo", "correct": false }
-                ]
-            },
-            {
-                "value": "Na mitologia egípcia, quem é o deus do sol?",
-                "answers": [
-                    { "value": "Rá", "correct": true },
-                    { "value": "Osíris", "correct": false }
-                ]
-            },
-            {
-                "value": "Quem foi o herói que matou a Medusa na mitologia grega?",
-                "answers": [
-                    { "value": "Aquiles", "correct": false },
-                    { "value": "Perseu", "correct": true },
-                ]
-            },
-            {
-                "value": "Quem é a deusa da caça na mitologia grega?",
-                "answers": [
-                    { "value": "Afrodite", "correct": false },
-                    { "value": "Ártemis", "correct": true }
-                ]
-            },
-            {
-                "value": "Qual das alternativas apresenta corretamente a fórmula para calcular a distância entre dois pontos em um plano cartesiano?",
-                "answers": [
-                    { "value": "<img src='./dist2.png'/>", "correct": false },
-                    { "value": "<img src='./dist1.png'/>", "correct": true }
-                ]
-            },
-            {
-                "value": "De acordo com a segunda lei de Newton, qual formula representa a equação da Força?",
-                "answers": [
-                    { "value": "<img src='./f2.png'/>", "correct": false },
-                    { "value": "<img src='./f1.png'/>", "correct": true }
-                ]
-            },
-            {
-                "value": "Complete: Ela foi __ escola para entregar __ trabalho de história.",
-                "answers": [
-                    { "value": "a, à", "correct": true },
-                    { "value": "à, à", "correct": false }
-                ]
-            },
-            {
-                "value": "Assinale a alternativa correta sobre a Revolução Francesa.",
-                "answers": [
-                    { "value": "A Revolução Francesa ocorreu entre 1789 e 1799, sendo um movimento político e social que visava o fim do absolutismo e o estabelecimento de uma república democrática.", "correct": true },
-                    { "value": "A Revolução Francesa foi um movimento exclusivamente econômico que visava à redistribuição de riquezas sem alterar a estrutura política do país.", "correct": false }
-                ]
-            },
-            {
-                "value": "Qual é o maior continente do mundo em termos de área?",
-                "answers": [
-                    { "value": "África", "correct": false },
-                    { "value": "Ásia", "correct": true }
-                ]
-            },
-            {
-                "value": "Qual o principal objetivo da pedagogia de Paulo Freire?",
-                "answers": [
-                    { "value": "Ensinar a leitura e a escrita de forma tradicional", "correct": false },
-                    { "value": "Promover a educação crítica e libertadora, estimulando a conscientização", "correct": true }
-                ]
-            },
-            {
-                "value": "O que Paulo Freire criticava nas práticas pedagógicas tradicionais?",
-                "answers": [
-                    { "value": "O caráter bancário da educação, que tratava os alunos como receptores passivos de conhecimento", "correct": true },
-                    { "value": "A ênfase no ensino de conteúdos acadêmicos específicos", "correct": false },
-                ]
-            },
-            {
-                "value": "Qual é o conceito central na obra 'Pedagogia do Oprimido'?",
-                "answers": [
-                    { "value": "A educação como um meio de transformação social, buscando a liberdade dos oprimidos", "correct": true },
-                    { "value": "A educação como um processo de adoção de valores impostos", "correct": false },
-                ]
-            },
-            {
-                "value": "Como Paulo Freire via a relação entre educador e educando?",
-                "answers": [
-                    { "value": "Como uma relação hierárquica, onde o educador é superior", "correct": false },
-                    { "value": "Como uma relação de diálogo, em que ambos aprendem juntos", "correct": true },
-                ]
-            },
-            {
-                "value": "Qual o papel da 'ação-reflexão-ação' na educação de Paulo Freire?",
-                "answers": [
-                    { "value": "A prática educativa deve ser baseada na reflexão crítica e na ação, promovendo mudanças concretas", "correct": true },
-                    { "value": "Apenas refletir sobre a teoria sem aplicação prática", "correct": false },
-                ]
+        const questions = {
+            "mitologia": [
+                {
+                    "value": "Quem é o rei dos deuses na mitologia grega?",
+                    "answers": [
+                        { "value": "Apolo", "correct": false },
+                        { "value": "Zeus", "correct": true },
+                    ]
+                },
+                {
+                    "value": "Quem foi o herói grego que realizou os 12 trabalhos?",
+                    "answers": [
+                        { "value": "Ulisses", "correct": false },
+                        { "value": "Hércules", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Na mitologia nórdica, quem é o deus do trovão?",
+                    "answers": [
+                        { "value": "Loki", "correct": false },
+                        { "value": "Thor", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Qual é o nome do cavalo de guerra de Hades, o deus do submundo na mitologia grega?",
+                    "answers": [
+                        { "value": "Cérbero", "correct": true },
+                        { "value": "Pégaso", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Quem é a deusa grega da sabedoria?",
+                    "answers": [
+                        { "value": "Hera", "correct": false },
+                        { "value": "Atena", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Quem era o pai de Zeus, Poseidon e Hades?",
+                    "answers": [
+                        { "value": "Cronos", "correct": true },
+                        { "value": "Apolo", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Na mitologia egípcia, quem é o deus do sol?",
+                    "answers": [
+                        { "value": "Rá", "correct": true },
+                        { "value": "Osíris", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Quem foi o herói que matou a Medusa na mitologia grega?",
+                    "answers": [
+                        { "value": "Aquiles", "correct": false },
+                        { "value": "Perseu", "correct": true },
+                    ]
+                },
+                {
+                    "value": "Quem é a deusa da caça na mitologia grega?",
+                    "answers": [
+                        { "value": "Afrodite", "correct": false },
+                        { "value": "Ártemis", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Quem é o rei dos deuses na mitologia grega?",
+                    "answers": [
+                        { "value": "Apolo", "correct": false },
+                        { "value": "Zeus", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Atena nasceu da cabeça de Zeus.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": true },
+                        { "value": "Falso", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Hércules foi condenado a realizar os 12 trabalhos como punição.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": true },
+                        { "value": "Falso", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Na mitologia romana, Vênus é a deusa da guerra.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": false },
+                        { "value": "Falso", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Qual é o nome da deusa romana do amor e da beleza?",
+                    "answers": [
+                        { "value": "Vênus", "correct": true },
+                        { "value": "Diana", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Qual deus nórdico é conhecido como o deus do fogo?",
+                    "answers": [
+                        { "value": "Thor", "correct": false },
+                        { "value": "Loki", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Hércules era filho de Zeus e Alcmena.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": true },
+                        { "value": "Falso", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Zeus é o deus do mar na mitologia grega.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": false },
+                        { "value": "Falso", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Quem é o deus romano da guerra?",
+                    "answers": [
+                        { "value": "Júpiter", "correct": false },
+                        { "value": "Marte", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Apolo é o deus grego da luz, música e profecia.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": true },
+                        { "value": "Falso", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Qual é o nome da deusa da caça na mitologia grega?",
+                    "answers": [
+                        { "value": "Ártemis", "correct": true },
+                        { "value": "Afrodite", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Quem foi o herói que matou a Medusa na mitologia grega?",
+                    "answers": [
+                        { "value": "Perseu", "correct": true },
+                        { "value": "Hércules", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Quem é o deus egípcio da morte?",
+                    "answers": [
+                        { "value": "Osíris", "correct": true },
+                        { "value": "Horus", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Zeus é o deus do submundo na mitologia grega.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": false },
+                        { "value": "Falso", "correct": true }
+                    ]
+                },
+                {
+                    "value": "A deusa Atena é associada à sabedoria e à estratégia.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": true },
+                        { "value": "Falso", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Quem é o deus grego do sono?",
+                    "answers": [
+                        { "value": "Hypnos", "correct": true },
+                        { "value": "Thanatos", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Hades é o deus do céu na mitologia grega.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": false },
+                        { "value": "Falso", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Quem foi o herói grego que lutou contra Aquiles na Guerra de Troia?",
+                    "answers": [
+                        { "value": "Heitor", "correct": true },
+                        { "value": "Paris", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Qual é o nome do cavalo alado de Perseu?",
+                    "answers": [
+                        { "value": "Cérbero", "correct": false },
+                        { "value": "Pégaso", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Quem é o deus da guerra na mitologia grega?",
+                    "answers": [
+                        { "value": "Ares", "correct": true },
+                        { "value": "Hermes", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Hermes é o deus mensageiro na mitologia grega.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": true },
+                        { "value": "Falso", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Qual é o nome do filho de Zeus e Alcmena?",
+                    "answers": [
+                        { "value": "Hércules", "correct": true },
+                        { "value": "Perseu", "correct": false }
+                    ]
+                },
+                {
+                    "value": "O cavalo alado Pégaso nasceu do sangue de Medusa.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": true },
+                        { "value": "Falso", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Quem foi o herói grego conhecido por sua força sobre-humana?",
+                    "answers": [
+                        { "value": "Aquiles", "correct": false },
+                        { "value": "Hércules", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Loki é o deus do trovão na mitologia nórdica.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": false },
+                        { "value": "Falso", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Quem é o deus grego do mar?",
+                    "answers": [
+                        { "value": "Poseidon", "correct": true },
+                        { "value": "Zeus", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Qual é o nome da deusa da beleza na mitologia grega?",
+                    "answers": [
+                        { "value": "Afrodite", "correct": true },
+                        { "value": "Hera", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Quem é o deus grego do vinho?",
+                    "answers": [
+                        { "value": "Dionísio", "correct": true },
+                        { "value": "Apolo", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Na mitologia egípcia, Anúbis é o deus da morte.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": true },
+                        { "value": "Falso", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Qual deus romano é o equivalente de Hermes na mitologia grega?",
+                    "answers": [
+                        { "value": "Júpiter", "correct": false },
+                        { "value": "Mercúrio", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Quem foi o amante de Perséfone, com quem ela teve um filho chamado Zagreus, na mitologia grega?",
+                    "answers": [
+                        { "value": "Hades", "correct": true },
+                        { "value": "Zeus", "correct": false }
+                    ]
+                }
+            ],
+            "conhecimentos-gerais": [
+                {
+                    "value": "Qual das alternativas apresenta corretamente a fórmula para calcular a distância entre dois pontos em um plano cartesiano?",
+                    "answers": [
+                        { "value": "<img src='./dist2.png'/>", "correct": false },
+                        { "value": "<img src='./dist1.png'/>", "correct": true }
+                    ]
+                },
+                {
+                    "value": "De acordo com a segunda lei de Newton, qual formula representa a equação da Força?",
+                    "answers": [
+                        { "value": "<img src='./f2.png'/>", "correct": false },
+                        { "value": "<img src='./f1.png'/>", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Assinale a alternativa correta sobre a Revolução Francesa.",
+                    "answers": [
+                        { "value": "A Revolução Francesa ocorreu entre 1789 e 1799, sendo um movimento político e social que visava o fim do absolutismo e o estabelecimento de uma república democrática.", "correct": true },
+                        { "value": "A Revolução Francesa foi um movimento exclusivamente econômico que visava à redistribuição de riquezas sem alterar a estrutura política do país.", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Qual é o maior continente do mundo em termos de área?",
+                    "answers": [
+                        { "value": "África", "correct": false },
+                        { "value": "Ásia", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Em que ano ocorreu a Proclamação da República no Brasil?",
+                    "answers": [
+                        { "value": "1889", "correct": true },
+                        { "value": "1900", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Quem é o autor da obra 'Dom Casmurro'?",
+                    "answers": [
+                        { "value": "Machado de Assis", "correct": true },
+                        { "value": "José de Alencar", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Em que ano foi assinada a Declaração de Independência dos Estados Unidos?",
+                    "answers": [
+                        { "value": "1776", "correct": true },
+                        { "value": "1789", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Qual é o nome do famoso cientista que formulou a teoria da gravitação universal?",
+                    "answers": [
+                        { "value": "Galileu Galilei", "correct": false },
+                        { "value": "Isaac Newton", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Na teoria da evolução, qual é o principal fator que explica a diversidade genética das populações ao longo do tempo?",
+                    "answers": [
+                        { "value": "Mutação aleatória", "correct": false },
+                        { "value": "Seleção natural", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Qual é a equação que descreve a relação entre a energia total e a massa de uma partícula em movimento relativístico?",
+                    "answers": [
+                        { "value": "<img src='./a1.png'/>", "correct": true },
+                        { "value": "<img src='./a2.png'/>", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Em biologia molecular, qual é a enzima responsável por sintetizar o RNA durante a transcrição?",
+                    "answers": [
+                        { "value": "DNA polimerase", "correct": false },
+                        { "value": "RNA polimerase", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Qual foi a principal causa da dissolução da União Soviética em 1991?",
+                    "answers": [
+                        { "value": "A guerra no Afeganistão", "correct": false },
+                        { "value": "Reformas de Mikhail Gorbatchov", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Qual é a fórmula da equação de Torricelli, que relaciona a velocidade final de um objeto em queda livre com a distância percorrida e a aceleração gravitacional?",
+                    "answers": [
+                        { "value": "<img src='./t2.png'/>", "correct": false },
+                        { "value": "<img src='./t1.png'/>", "correct": true }
+                    ]
+                },
+                {
+                    "value": "A primeira missão tripulada à Lua ocorreu em 1968.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": false },
+                        { "value": "Falso", "correct": true }
+                    ]
+                },
+                {
+                    "value": "O sistema solar tem 7 planetas conhecidos.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": false },
+                        { "value": "Falso", "correct": true }
+                    ]
+                },
+                {
+                    "value": "O ferro é o principal componente da hemoglobina.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": true },
+                        { "value": "Falso", "correct": false }
+                    ]
+                },
+                {
+                    "value": "O Brasil é o maior produtor de café do mundo.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": true },
+                        { "value": "Falso", "correct": false }
+                    ]
+                },
+                {
+                    "value": "A tabela periódica foi organizada por Dmitri Mendeliev.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": true },
+                        { "value": "Falso", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Qual é a maior península do mundo?",
+                    "answers": [
+                        { "value": "Península Arábica", "correct": true },
+                        { "value": "Península Indochinesa", "correct": false },
+                    ]
+                },
+                {
+                    "value": "Qual é a capital do Canadá?",
+                    "answers": [
+                        { "value": "Toronto", "correct": false },
+                        { "value": "Ottawa", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Qual é o nome da teoria proposta por Charles Darwin sobre a evolução das espécies?",
+                    "answers": [
+                        { "value": "Teoria da Seleção Natural", "correct": true },
+                        { "value": "Teoria da Genética Mendeliana", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Em que ano ocorreu a queda do Muro de Berlim?",
+                    "answers": [
+                        { "value": "1989", "correct": true },
+                        { "value": "1991", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Qual é a principal função dos ribossomos na célula?",
+                    "answers": [
+                        { "value": "Produzir energia para a célula", "correct": false },
+                        { "value": "Sintetizar proteínas", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Qual é a maior ilha do mundo?",
+                    "answers": [
+                        { "value": "Groelândia", "correct": true },
+                        { "value": "Nova Guiné", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Quem é o autor do 'Príncipe', um dos tratados mais importantes sobre o poder político?",
+                    "answers": [
+                        { "value": "Maquiavel", "correct": true },
+                        { "value": "John Locke", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Qual é a principal fonte de energia do Sol?",
+                    "answers": [
+                        { "value": "Fusão nuclear", "correct": true },
+                        { "value": "Fissão nuclear", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Qual é o símbolo químico do ouro?",
+                    "answers": [
+                        { "value": "Au", "correct": true },
+                        { "value": "Ag", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Quem pintou a obra 'Mona Lisa'?",
+                    "answers": [
+                        { "value": "Michelangelo", "correct": false },
+                        { "value": "Leonardo da Vinci", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Qual é o planeta mais próximo do Sol?",
+                    "answers": [
+                        { "value": "Vênus", "correct": false },
+                        { "value": "Mercúrio", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Qual a alternativa que apresenta o uso correto da crase?",
+                    "answers": [
+                        { "value": "Vou à escola agora.", "correct": true },
+                        { "value": "Vou a escola agora.", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Qual é o nome do movimento literário brasileiro que ocorreu entre 1880 e 1922 e é caracterizado pela crítica social e exploração das questões de classe?",
+                    "answers": [
+                        { "value": "Modernismo", "correct": false },
+                        { "value": "Realismo", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Quem escreveu a obra 'A Moreninha', que é um dos principais romances do Romantismo brasileiro?",
+                    "answers": [
+                        { "value": "José de Alencar", "correct": false },
+                        { "value": "Joaquim Manuel de Macedo", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Qual é a principal característica do Modernismo brasileiro na fase de 1922 a 1960?",
+                    "answers": [
+                        { "value": "Quebra com a igreja católica", "correct": false },
+                        { "value": "Experimentação e liberdade estética", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Quem escreveu a obra '1984', que descreve uma distopia totalitária controlada por um regime de vigilância constante?",
+                    "answers": [
+                        { "value": "Aldous Huxley", "correct": false },
+                        { "value": "George Orwell", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Qual civilização antiga é responsável pela invenção da roda, por volta de 3500 a.C.?",
+                    "answers": [
+                        { "value": "Egípcia", "correct": false },
+                        { "value": "Suméria", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Qual é o país com maior quantidade de lagos naturais no mundo?",
+                    "answers": [
+                        { "value": "Canadá", "correct": true },
+                        { "value": "Rússia", "correct": false }
+                    ]
+                },
+                {
+                    "value": "O movimento artístico conhecido como 'Surrealismo' surgiu em qual país?",
+                    "answers": [
+                        { "value": "Itália", "correct": false },
+                        { "value": "França", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Qual é o maior produtor mundial de lítio, mineral essencial para baterias?",
+                    "answers": [
+                        { "value": "Chile", "correct": true },
+                        { "value": "China", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Qual fenômeno físico explica por que o céu é azul?",
+                    "answers": [
+                        { "value": "Refração", "correct": false },
+                        { "value": "Dispersão de Rayleigh", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Qual empresa desenvolveu o primeiro processador comercial, lançado em 1971?",
+                    "answers": [
+                        { "value": "IBM", "correct": false },
+                        { "value": "Intel", "correct": true }
+                    ]
+                }
+            ],
+            "paulo-freire": [
+                {
+                    "value": "Paulo Freire defendia uma educação:",
+                    "answers": [
+                        { "value": "Bancária", "correct": false },
+                        { "value": "Dialógica e libertadora", "correct": true }
+                    ]
+                },
+                {
+                    "value": "O que significa 'educação bancária' para Paulo Freire?",
+                    "answers": [
+                        { "value": "Ensino focado no diálogo", "correct": false },
+                        { "value": "Depósito de informações no aluno", "correct": true }
+                    ]
+                },
+                {
+                    "value": "V ou F: Para Paulo Freire, educar é um ato político.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": true },
+                        { "value": "Falso", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Paulo Freire acreditava que o professor deve:",
+                    "answers": [
+                        { "value": "Impor conteúdos prontos", "correct": false },
+                        { "value": "Dialogar e construir saberes com os alunos", "correct": true }
+                    ]
+                },
+                {
+                    "value": "V ou F: Paulo Freire era favorável a métodos rígidos e mecânicos de ensino.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": false },
+                        { "value": "Falso", "correct": true }
+                    ]
+                },
+                {
+                    "value": "A 'Pedagogia do Oprimido' busca:",
+                    "answers": [
+                        { "value": "Manter a ordem social vigente", "correct": false },
+                        { "value": "Libertar os oprimidos por meio da educação crítica", "correct": true }
+                    ]
+                },
+                {
+                    "value": "O que é 'conscientização' em Paulo Freire?",
+                    "answers": [
+                        { "value": "Memorizar conteúdos", "correct": false },
+                        { "value": "Entender a realidade e agir para transformá-la", "correct": true }
+                    ]
+                },
+                {
+                    "value": "V ou F: A educação deve ser neutra, segundo Paulo Freire.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": false },
+                        { "value": "Falso", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Paulo Freire defendia que os conteúdos escolares devem:",
+                    "answers": [
+                        { "value": "Partir da realidade dos alunos", "correct": true },
+                        { "value": "Ser desconectados do cotidiano", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Para Freire, educar sem diálogo gera:",
+                    "answers": [
+                        { "value": "Autonomia", "correct": false },
+                        { "value": "Alienação", "correct": true }
+                    ]
+                },
+                {
+                    "value": "V ou F: Na visão freireana, o educando também educa.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": true },
+                        { "value": "Falso", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Na educação libertadora, o professor é:",
+                    "answers": [
+                        { "value": "Autoritário", "correct": false },
+                        { "value": "Mediador e facilitador do conhecimento", "correct": true }
+                    ]
+                },
+                {
+                    "value": "V ou F: Paulo Freire defendia a separação total entre teoria e prática.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": false },
+                        { "value": "Falso", "correct": true }
+                    ]
+                },
+                {
+                    "value": "O termo 'leitura do mundo' significa:",
+                    "answers": [
+                        { "value": "Interpretar textos literários", "correct": false },
+                        { "value": "Compreender a realidade antes da leitura da palavra", "correct": true }
+                    ]
+                },
+                {
+                    "value": "A educação libertadora promove:",
+                    "answers": [
+                        { "value": "Passividade", "correct": false },
+                        { "value": "Autonomia e transformação social", "correct": true }
+                    ]
+                },
+                {
+                    "value": "V ou F: Paulo Freire defendia que a educação serve para manter as estruturas de poder.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": false },
+                        { "value": "Falso", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Paulo Freire nasceu em qual país?",
+                    "answers": [
+                        { "value": "Argentina", "correct": false },
+                        { "value": "Brasil", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Ano de publicação da obra 'Pedagogia do Oprimido':",
+                    "answers": [
+                        { "value": "1970", "correct": true },
+                        { "value": "1980", "correct": false }
+                    ]
+                },
+                {
+                    "value": "V ou F: O método de Paulo Freire se baseia na repetição mecânica.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": false },
+                        { "value": "Falso", "correct": true }
+                    ]
+                },
+                {
+                    "value": "O que significa 'opressor' na pedagogia freireana?",
+                    "answers": [
+                        { "value": "Aquele que promove a libertação", "correct": false },
+                        { "value": "Aquele que impede a consciência crítica dos outros", "correct": true }
+                    ]
+                },
+                {
+                    "value": "V ou F: Paulo Freire defendia a educação como prática de liberdade.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": true },
+                        { "value": "Falso", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Paulo Freire defendia que a educação deveria partir de:",
+                    "answers": [
+                        { "value": "Conteúdos prontos e impostos", "correct": false },
+                        { "value": "Experiências e realidade dos educandos", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Qual era a profissão inicial de Paulo Freire?",
+                    "answers": [
+                        { "value": "Advogado", "correct": true },
+                        { "value": "Engenheiro", "correct": false }
+                    ]
+                },
+                {
+                    "value": "V ou F: Na educação freireana, o diálogo é fundamental.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": true },
+                        { "value": "Falso", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Segundo Freire, aprender sem sentido leva à:",
+                    "answers": [
+                        { "value": "Conscientização", "correct": false },
+                        { "value": "Alienação", "correct": true }
+                    ]
+                },
+                {
+                    "value": "V ou F: A educação proposta por Paulo Freire busca a transformação social.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": true },
+                        { "value": "Falso", "correct": false }
+                    ]
+                },
+                {
+                    "value": "A prática educativa deve ser:",
+                    "answers": [
+                        { "value": "Isolada da realidade", "correct": false },
+                        { "value": "Ligada à prática social", "correct": true }
+                    ]
+                },
+                {
+                    "value": "V ou F: Paulo Freire defendia a educação como ato político, nunca neutro.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": true },
+                        { "value": "Falso", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Paulo Freire foi exilado após o golpe militar de:",
+                    "answers": [
+                        { "value": "1964", "correct": true },
+                        { "value": "1970", "correct": false }
+                    ]
+                },
+                {
+                    "value": "V ou F: Na educação freireana, quem não sabe nada é o aluno.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": false },
+                        { "value": "Falso", "correct": true }
+                    ]
+                },
+                {
+                    "value": "O que significa 'ação-reflexão-ação' para Freire?",
+                    "answers": [
+                        { "value": "Praticar sem pensar", "correct": false },
+                        { "value": "Refletir sobre a prática para transformar a realidade", "correct": true }
+                    ]
+                },
+                {
+                    "value": "V ou F: Paulo Freire defendia a educação para manter o status quo.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": false },
+                        { "value": "Falso", "correct": true }
+                    ]
+                },
+                {
+                    "value": "O livro 'Pedagogia da Esperança' é uma:",
+                    "answers": [
+                        { "value": "Autobiografia", "correct": false },
+                        { "value": "Reflexão sobre sua prática e legado", "correct": true }
+                    ]
+                },
+                {
+                    "value": "V ou F: Na pedagogia freireana, a leitura da palavra vem antes da leitura do mundo.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": false },
+                        { "value": "Falso", "correct": true }
+                    ]
+                },
+                {
+                    "value": "O método de alfabetização de Freire foi aplicado com sucesso primeiro em:",
+                    "answers": [
+                        { "value": "Angicos (RN)", "correct": true },
+                        { "value": "Recife (PE)", "correct": false }
+                    ]
+                },
+                {
+                    "value": "V ou F: Paulo Freire foi reconhecido mundialmente por sua contribuição à educação.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": true },
+                        { "value": "Falso", "correct": false }
+                    ]
+                },
+                {
+                    "value": "Paulo Freire faleceu em que ano?",
+                    "answers": [
+                        { "value": "1997", "correct": true },
+                        { "value": "2005", "correct": false }
+                    ]
+                },
+                {
+                    "value": "V ou F: ETECs utilizam o método de Paulo Freire.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": false },
+                        { "value": "Falso", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Paulo Freire desenvolveu parte de sua obra durante o exílio. Em qual país ele elaborou grande parte da 'Pedagogia do Oprimido'?",
+                    "answers": [
+                        { "value": "Brasil", "correct": false },
+                        { "value": "Chile", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Na visão de Paulo Freire, o que caracteriza a verdadeira 'praxis'?",
+                    "answers": [
+                        { "value": "A simples execução de tarefas educativas", "correct": false },
+                        { "value": "A união entre reflexão e ação transformadora da realidade", "correct": true }
+                    ]
+                }
+            ],
+            "morte-subta": [
+                {
+                    "value": "V ou F: Paulo Freire acreditava que a neutralidade na educação é uma posição legítima e desejável.",
+                    "answers": [
+                        { "value": "Verdadeiro", "correct": false },
+                        { "value": "Falso", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Qual é o país com o maior número de ilhas do mundo?",
+                    "answers": [
+                        { "value": "Filipinas", "correct": false },
+                        { "value": "Suécia", "correct": true }
+                    ]
+                },
+                {
+                    "value": "Qual herói grego, conhecido por sua inteligência, ajudou os gregos a conquistar a cidade de Troia com a ideia do cavalo de madeira?",
+                    "answers": [
+                        { "value": "Aquiles", "correct": false },
+                        { "value": "Ulisses", "correct": true }
+                    ]
+                }
+            ]
+        };
+
+        const shuffle = (arr) => {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
             }
-        ];
+            return arr;
+        }
+
+        for (let each in questions) {
+            console.log(questions[each].length);
+        }
 
         document.addEventListener('DOMContentLoaded', async () => {
             const start = document.getElementById('start');
             const game = document.getElementById('game');
             const end = document.getElementById('end');
+            const teams = document.getElementById('teams');
             const team1 = document.getElementById('team1');
             const team1Name = document.getElementById('team1-name');
             const team1Score = document.getElementById('team1-score');
             const team2 = document.getElementById('team2');
             const team2Name = document.getElementById('team2-name');
             const team2Score = document.getElementById('team2-score');
+            const team3 = document.getElementById('team3');
+            const team3Name = document.getElementById('team3-name');
+            const team3Score = document.getElementById('team3-score');
             const question = document.getElementById('question');
             const questionNum = document.getElementById('question-num');
             const answers = document.getElementById('answers');
             const next = document.getElementById('next-question');
             const reset = document.getElementById('reset');
             const winner = document.getElementById('winner');
+            const theme = document.getElementById('theme');
+            const time = document.getElementById('time');
             const team1NameFinal = document.getElementById('team1-name-final');
             const team1ScoreFinal = document.getElementById('team1-score-final');
             const team2NameFinal = document.getElementById('team2-name-final');
             const team2ScoreFinal = document.getElementById('team2-score-final');
+            const team3NameFinal = document.getElementById('team3-name-final');
+            const team3ScoreFinal = document.getElementById('team3-score-final');
             const tbody = document.getElementById('tbody');
 
             for (let each of hist) {
@@ -204,97 +953,128 @@
             }
 
             let qi = 0;
+            let _questions;
+
+            function fn() {
+                if (qi >= _questions.length) {
+                    game.hidden = true;
+                    end.hidden = false;
+                    reset.hidden = false;
+
+                    const score1 = Number(team1Score.textContent);
+                    const score2 = Number(team2Score.textContent);
+                    const score3 = Number(team3Score.textContent);
+
+                    if (score1 === score2 && score2 === score3) {
+                        winner.innerText = 'Empate!';
+                    } else if (score1 > score2 && score1 > score3) {
+                        winner.innerText = team1Name.textContent;
+                    } else if (score2 > score1 && score2 > score3) {
+                        winner.innerText = team2Name.textContent;
+                    } else if (score3 > score1 && score3 > score2) {
+                        winner.innerText = team3Name.textContent;
+                    } else if (score1 === score2 && score1 > score3) {
+                        winner.innerText = 'Empate!';
+                    } else if (score1 === score3 && score1 > score2) {
+                        winner.innerText = 'Empate!';
+                    } else if (score2 === score3 && score2 > score1) {
+                        winner.innerText = 'Empate!';
+                    }
+
+                    team1NameFinal.textContent = team1Name.textContent;
+                    team1ScoreFinal.textContent = team1Score.textContent;
+
+                    team2NameFinal.textContent = team2Name.textContent;
+                    team2ScoreFinal.textContent = team2Score.textContent;
+
+                    team3NameFinal.textContent = team3Name.textContent;
+                    team3ScoreFinal.textContent = team3Score.textContent;
+
+                    hist.push({ name: team1Name.textContent, score: Number(team1Score.textContent) });
+                    tbody.innerHTML += `<tr>
+                        <td>${team1Name.textContent}</td>
+                        <td>${team1Score.textContent}</td>
+                    </tr>`;
+                    hist.push({ name: team2Name.textContent, score: Number(team2Score.textContent) });
+                    tbody.innerHTML += `<tr>
+                        <td>${team2Name.textContent}</td>
+                        <td>${team2Score.textContent}</td>
+                    </tr>`;
+                    hist.push({ name: team3Name.textContent, score: Number(team3Score.textContent) });
+                    tbody.innerHTML += `<tr>
+                        <td>${team3Name.textContent}</td>
+                        <td>${team3Score.textContent}</td>
+                    </tr>`;
+                    localStorage.setItem('history', JSON.stringify(hist));
+                    return;
+                }
+                question.innerText = _questions[qi].value;
+                answers.innerHTML = '';
+                next.hidden = true;
+                questionNum.innerText = `${qi+1}/${_questions.length}`;
+                const bar = document.getElementById('bar');
+                let s = document.timeline.currentTime;
+                let target = Number(time.value) * 1000;
+                requestAnimationFrame(function fn(t) {
+                    let current = t - s;
+                    if (current >= target) {
+                        current = target;
+                    }
+                    bar.style.width = `${100 - (current / target * 100)}%`;
+                    bar.style.backgroundColor = `rgb(${255 * (current / target)}, ${255 - (255 * (current / target))}, 0)`;
+                    // bar.innerText = `${Math.floor((target-current)/1000)}`;
+                    if (current == target) {
+                        let each = _questions[qi].answers;
+                        answers.innerHTML += `<div --correct="${each[0].correct}" style="display: flex;align-items: center; justify-content: start;width: 100%;margin-right: .5em;background-color: #fff6da;color: black;width: 25vw;border: 2px solid #643f1d;padding: 1em;border-radius: .5em;">
+                            <span style="font-size: 2em;margin-right: .5em;background: green;color:white;padding: .25em;border-radius: .25em;">A</span>
+                            <span style="font-size: 1.25em;">${each[0].value}</span>
+                        </div>`;
+                        answers.innerHTML += `<div --correct="${each[1].correct}" style="display: flex;align-items: center; justify-content: start;width: 100%;margin-right: .5em;background-color: #fff6da;color: black;width: 25vw;border: 2px solid #643f1d;padding: 1em;border-radius: .5em;">
+                            <span style="font-size: 2em;margin-right: .5em;background: red;color:white;padding: .25em;border-radius: .25em;">B</span>
+                            <span style="font-size: 1.25em;">${each[1].value}</span>
+                        </div>`;
+                        return;
+                    }
+                    requestAnimationFrame(fn);
+                });
+            }
+
             document.getElementById('submit').addEventListener('click', async () => {
                 start.hidden = true;
                 team1Name.innerText = document.getElementById('team1-input').value;
                 team1Score.innerText = '0';
                 team2Name.innerText = document.getElementById('team2-input').value;
                 team2Score.innerText = '0';
+                team3Name.innerText = document.getElementById('team3-input').value;
+                team3Score.innerText = '0';
                 game.hidden = false;
-
-                function fn() {
-                    if (qi >= questions.length) {
-                        game.hidden = true;
-                        end.hidden = false;
-
-                        if (Number(team1Score.textContent) > Number(team2Score.textContent)) {
-                            winner.innerText = team1Name.textContent;
-                        } else {
-                            winner.innerText = team2Name.textContent;
-                        }
-
-                        team1NameFinal.textContent = team1Name.textContent;
-                        team1ScoreFinal.textContent = team1Score.textContent;
-
-                        team2NameFinal.textContent = team2Name.textContent;
-                        team2ScoreFinal.textContent = team2Score.textContent;
-
-                        hist.push({ name: team1Name.textContent, score: Number(team1Score.textContent) });
-                        tbody.innerHTML += `<tr>
-                            <td>${team1Name.textContent}</td>
-                            <td>${team1Score.textContent}</td>
-                        </tr>`;
-                        hist.push({ name: team2Name.textContent, score: Number(team2Score.textContent) });
-                        tbody.innerHTML += `<tr>
-                            <td>${team2Name.textContent}</td>
-                            <td>${team2Score.textContent}</td>
-                        </tr>`;
-                        localStorage.setItem('history', JSON.stringify(hist));
-                        return;
-                    }
-                    question.innerText = questions[qi].value;
-                    answers.innerHTML = '';
-                    next.hidden = true;
-                    questionNum.innerText = `${qi+1}/${questions.length}`;
-                    const bar = document.getElementById('bar');
-                    let s = document.timeline.currentTime;
-                    let target = 15000;
-                    requestAnimationFrame(function fn(t) {
-                        let current = t - s;
-                        if (current >= target) {
-                            current = target;
-                        }
-                        bar.style.width = `${100 - (current / target * 100)}%`;
-                        bar.style.backgroundColor = `rgb(${255 * (current / target)}, ${255 - (255 * (current / target))}, 0)`;
-                        // bar.innerText = `${Math.floor((target-current)/1000)}`;
-                        if (current == target) {
-                            for (let i in questions[qi].answers) {
-                                let each = questions[qi].answers[i];
-                                answers.innerHTML += `<div --correct="${each.correct}" style="display: flex;align-items: center; justify-content: start;width: 100%;margin-right: .5em;background-color: #fff6da;color: black;width: 25vw;border: 2px solid #643f1d;padding: 1em;border-radius: .5em;">
-                                    <span style="font-size: 2em;margin-right: .5em;background: black;color:white;padding: .25em;border-radius: .25em;">${String.fromCharCode(65+Number(i))}</span>
-                                    <span style="font-size: 1.25em;">${each.value}</span>
-                                </div>`;
-                            }
-                            return;
-                        }
-                        requestAnimationFrame(fn);
-                    });
-                }
-
-                answers.addEventListener('click', () => {
-                    for (let each of answers.children) {
-                        if (each.getAttribute('--correct') == 'true') {
-                            each.style.boxShadow = `0 0 15px rgba(0, 0, 0, 0.5)`;
-                        } else {
-                            each.style.filter = `brightness(50%)`;
-                        }
-                    }
-                });
-
-                next.addEventListener('click', () => {
-                    qi++;
-                    fn();
-                });
+                _questions = shuffle(questions[theme.value]);
 
                 fn();
             });
-
+            next.addEventListener('click', () => {
+                qi++;
+                fn();
+            });
+            answers.addEventListener('click', () => {
+                for (let each of answers.children) {
+                    if (each.getAttribute('--correct') == 'true') {
+                        each.style.boxShadow = `0 0 15px rgba(0, 0, 0, 0.5)`;
+                    } else {
+                        each.style.filter = `brightness(50%)`;
+                    }
+                }
+            });
             team1.addEventListener('click', () => {
                 team1Score.innerText = Number(team1Score.innerText)+1;
                 next.hidden = false;
             });
             team2.addEventListener('click', () => {
                 team2Score.innerText = Number(team2Score.innerText)+1;
+                next.hidden = false;
+            });
+            team3.addEventListener('click', () => {
+                team3Score.innerText = Number(team3Score.innerText)+1;
                 next.hidden = false;
             });
             reset.addEventListener('click', () => {
@@ -321,9 +1101,14 @@
                     <span id="team1-score" style="margin-left: .5em;background: black;color:white;font-weight: bold;padding-left: .5em;padding-right: .5em;border-radius: .25em;">2</span>
                 </div>
                 <span style="font-weight: bold;font-size: 1.5em;margin-left: .5em;margin-right: .5em;">Vs.</span>
-                <div id="team2" style="display: flex;align-items: center; justify-content: start;width: 100%;background-color: #fff6da;color: black;width: 25%;border: 2px solid #643f1d;padding: .25em;border-radius: .5em;cursor: pointer;user-select: none;">
-                    <span id="team2-score" style="margin-right: .5em;background: black;color:white;font-weight: bold;padding-left: .5em;padding-right: .5em;border-radius: .25em;">0</span>
+                <div id="team2" style="display: flex;align-items: center; justify-content: end;width: 100%;background-color: #fff6da;color: black;width: 25%;border: 2px solid #643f1d;padding: .25em;border-radius: .5em;cursor: pointer;user-select: none;">
                     <span id="team2-name">Team 2</span>
+                    <span id="team2-score" style="margin-left: .5em;background: black;color:white;font-weight: bold;padding-left: .5em;padding-right: .5em;border-radius: .25em;">2</span>
+                </div>
+                <span style="font-weight: bold;font-size: 1.5em;margin-left: .5em;margin-right: .5em;">Vs.</span>
+                <div id="team3" style="display: flex;align-items: center; justify-content: end;width: 100%;background-color: #fff6da;color: black;width: 25%;border: 2px solid #643f1d;padding: .25em;border-radius: .5em;cursor: pointer;user-select: none;">
+                    <span id="team3-name">Team 3</span>
+                    <span id="team3-score" style="margin-left: .5em;background: black;color:white;font-weight: bold;padding-left: .5em;padding-right: .5em;border-radius: .25em;">2</span>
                 </div>
             </div>
             <div style="height: 15%;width: 100%;display: flex;flex-flow: column;align-items: center;justify-content: center;">
@@ -342,16 +1127,21 @@
             </div>
         </div>
         <div id="end" style="width: 100%;height: 100%;display: flex;flex-flow: column;align-items: center;justify-content: center;" hidden>
-            <h2>Equipe <span id="winner" style="font-weight: bold;color: #643f1d;">equipe</span> ganhou!</h2>
+            <h1>Equipe <span id="winner" style="font-weight: bold;color: #643f1d;">equipe</span> ganhou!</h1>
             <div style="width: 100%;display: flex;align-items: center;justify-content: center;margin-top: 1em;">
                 <div id="team1" style="display: flex;align-items: center; justify-content: end;width: 100%;background-color: #fff6da;color: black;width: 25%;border: 2px solid #643f1d;padding: .25em;border-radius: .5em;cursor: pointer;user-select: none;">
                     <span id="team1-name-final">Team 1</span>
                     <span id="team1-score-final" style="margin-left: .5em;background: black;color:white;font-weight: bold;padding-left: .5em;padding-right: .5em;border-radius: .25em;">2</span>
                 </div>
                 <span style="font-weight: bold;font-size: 1.5em;margin-left: .5em;margin-right: .5em;">Vs.</span>
-                <div id="team2" style="display: flex;align-items: center; justify-content: start;width: 100%;background-color: #fff6da;color: black;width: 25%;border: 2px solid #643f1d;padding: .25em;border-radius: .5em;cursor: pointer;user-select: none;">
-                    <span id="team2-score-final" style="margin-right: .5em;background: black;color:white;font-weight: bold;padding-left: .5em;padding-right: .5em;border-radius: .25em;">0</span>
+                <div id="team2" style="display: flex;align-items: center; justify-content: end;width: 100%;background-color: #fff6da;color: black;width: 25%;border: 2px solid #643f1d;padding: .25em;border-radius: .5em;cursor: pointer;user-select: none;">
                     <span id="team2-name-final">Team 2</span>
+                    <span id="team2-score-final" style="margin-left: .5em;background: black;color:white;font-weight: bold;padding-left: .5em;padding-right: .5em;border-radius: .25em;">2</span>
+                </div>
+                <span style="font-weight: bold;font-size: 1.5em;margin-left: .5em;margin-right: .5em;">Vs.</span>
+                <div id="team3" style="display: flex;align-items: center; justify-content: end;width: 100%;background-color: #fff6da;color: black;width: 25%;border: 2px solid #643f1d;padding: .25em;border-radius: .5em;cursor: pointer;user-select: none;">
+                    <span id="team3-name-final">Team 3</span>
+                    <span id="team3-score-final" style="margin-left: .5em;background: black;color:white;font-weight: bold;padding-left: .5em;padding-right: .5em;border-radius: .25em;">2</span>
                 </div>
             </div>
             <div style="position: absolute;bottom: 1em;right: 1em;">
@@ -409,10 +1199,23 @@
                         <label for="team2" class="form-label">Time 2</label>
                         <input id="team2-input" type="text" class="form-control" name="team2" required>
                     </div>
-                    <!-- <div class="mb-3">
-                        <label for="questionCount" class="form-label">Number of Questions</label>
-                        <input type="number" class="form-control" id="questionCount" name="questionCount" min="1" required>
-                    </div> -->
+                    <div class="mb-3">
+                        <label for="team3" class="form-label">Time 3</label>
+                        <input id="team3-input" type="text" class="form-control" name="team2" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="theme" class="form-label">Tema</label>
+                        <select id="theme" class="form-control" required>
+                            <option value="mitologia">Mitologia</option>
+                            <option value="paulo-freire">Paulo Freire</option>
+                            <option value="conhecimentos-gerais">Conhecimentos Gerais</option>
+                            <option value="morte-subta">Morte Súbta</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="time" class="form-label">Tempo de Leitura (segundos)</label>
+                        <input id="time" type="number" class="form-control" value="10" required>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary" id="submit" data-bs-dismiss="modal">Começar</button>
